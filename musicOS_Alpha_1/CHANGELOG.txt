@@ -1,0 +1,15 @@
+musicOS Changelog
+=================
+
+Alpha 1
+-------
+- First public alpha release candidate.
+- Added custom Home screen and dynamic mini-player.
+- Added custom Quick Screen.
+- Added custom Now Playing / WPS design.
+- Added dynamic battery display.
+- Added Shuffle and Repeat sprite sheets.
+- Simplified volume and brightness glyph states.
+- Fixed Home mini-player leaking into the Quick Screen during redraws by using permanent viewports with screen-conditional content.
+- Stabilized Home / Quick Screen backdrop switching.
+- Added custom menu title, selection styling and Inter fonts.
