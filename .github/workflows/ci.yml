@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check and package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # tags, for the package version
+
+      - name: Check theme files
+        run: python3 scripts/check.py
+
+      - name: Build package
+        run: python3 scripts/build.py
+
+      - name: Upload test package
+        uses: actions/upload-artifact@v7
+        with:
+          path: dist/*.zip
+          archive: false
+
+  checkwps:
+    name: checkwps (Rockbox ${{ matrix.rockbox }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        rockbox: [v4.0-final, master]
+    # The development branch can break for reasons unrelated to musicOS.
+    continue-on-error: ${{ matrix.rockbox == 'master' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rockbox build dependencies
+        run: sudo apt-get update && sudo apt-get install -y libsdl2-dev
+
+      - name: Validate skins with Rockbox's parser
+        run: scripts/checkwps.sh ${{ matrix.rockbox }}

@@ -1,0 +1,65 @@
+name: Bug report
+description: Something looks wrong or does not work in musicOS
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing musicOS! It is alpha software, so visual glitches are expected, and reports like this one help fix them.
+
+  - type: dropdown
+    id: model
+    attributes:
+      label: iPod model
+      options:
+        - iPod Video 5th generation
+        - iPod Video 5.5th generation
+        - iPod Classic 6th generation
+        - iPod Classic 6.5th / 7th generation
+        - Other (say which below)
+    validations:
+      required: true
+
+  - type: input
+    id: rockbox
+    attributes:
+      label: Rockbox version
+      description: Shown in System → Rockbox Info on the iPod.
+      placeholder: e.g. 4.0, or a daily build such as 9d3d2c6-261006
+    validations:
+      required: true
+
+  - type: input
+    id: musicos
+    attributes:
+      label: musicOS version
+      placeholder: e.g. v0.2.1-alpha
+    validations:
+      required: true
+
+  - type: dropdown
+    id: variant
+    attributes:
+      label: Theme
+      options:
+        - musicOS (light)
+        - musicOS Dark
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: |
+        Which screen (Home, Now Playing, Quick Screen, a menu), what you expected to see, and how to make it happen again.
+        For text problems, such as missing Chinese, Japanese or Korean characters, paste the exact title, artist or album.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or photo
+      description: Drag an image here if you can.
