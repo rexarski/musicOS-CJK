@@ -1,0 +1,14 @@
+# Build output (python3 scripts/build.py)
+/dist/
+
+# OS clutter
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+
+# Rockbox sources fetched by scripts/checkwps.sh
+/.cache/
