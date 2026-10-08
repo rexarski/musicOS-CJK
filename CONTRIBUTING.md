@@ -75,9 +75,13 @@ Git tags carry a `v` prefix: `v0.2.1-alpha`.
    git push origin v0.2.2-alpha
    ```
 
+   Or, from the browser: **Actions → Release → Run workflow**, keep `main`
+   selected and enter the version (`v0.2.2-alpha`). The workflow creates the
+   tag on the latest commit of that branch.
 3. The **Release** workflow builds `musicOS-v0.2.2-alpha.zip` and publishes a
-   GitHub release with that version's changelog section as its notes. A tag
-   with a suffix such as `-alpha`, `-beta` or `-rc.1` becomes a pre-release.
+   GitHub release with that version's changelog section as its notes. A
+   version with a suffix such as `-alpha`, `-beta` or `-rc.1` becomes a
+   pre-release.
 
 To build the package locally, run `python3 scripts/build.py`; the zip is
 written to `dist/`.
