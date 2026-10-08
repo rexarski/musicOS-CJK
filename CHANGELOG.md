@@ -9,6 +9,8 @@ an `-alpha` suffix while the theme is in alpha. Each version has a matching
 
 ## [Unreleased]
 
+## [0.2.2-alpha] - 2026-10-08
+
 The theme files are unchanged from 0.2.1-alpha. This release reorganizes the
 repository and fixes the release package.
 
@@ -129,7 +131,8 @@ The first public alpha, released as "musicOS Alpha 1".
 - With the Classic Quick Screen download, Home Screen album art is cropped
   from the top-left.
 
-[Unreleased]: https://github.com/federicoplg/musicOS/compare/v0.2.1-alpha...HEAD
+[Unreleased]: https://github.com/rexarski/musicOS-CJK/compare/v0.2.2-alpha...HEAD
+[0.2.2-alpha]: https://github.com/rexarski/musicOS-CJK/releases/tag/v0.2.2-alpha
 [0.2.1-alpha]: https://github.com/federicoplg/musicOS/releases/tag/v0.2.1-alpha
 [0.2.0-alpha]: https://github.com/federicoplg/musicOS/releases/tag/v0.2.0-alpha
 [0.1.0-alpha]: https://github.com/federicoplg/musicOS/releases/tag/v0.1.0-alpha
