@@ -1,0 +1,19 @@
+# pull[bot] (https://github.com/wei/pull) keeps this fork in sync with the
+# original musicOS repository. Without this file it hard-resets main to
+# upstream, which would throw away this fork's own commits.
+#
+# Fork-only file: leave it out of pull requests to federicoplg/musicOS.
+# pull[bot] reads it from the default branch; after changing it, validate it
+# at https://pull.git.ci/check/rexarski/musicOS-CJK
+version: "1"
+rules:
+  - base: main
+    upstream: federicoplg:main
+    # Open a pull request for each upstream change and merge it with a merge
+    # commit, keeping this fork's history. Pull requests with conflicts or
+    # failing checks stay open for review.
+    mergeMethod: merge
+    mergeUnstable: false
+    conflictReviewers:
+      - rexarski
+label: ":arrow_heading_down: pull"
