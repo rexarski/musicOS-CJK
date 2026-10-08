@@ -30,8 +30,9 @@ repository and fixes the release package.
 - `scripts/build.py`, which builds the release zip and takes its release
   notes from this changelog.
 - GitHub Actions: every push and pull request is checked and gets a test
-  package, and pushing a `v*` tag publishes a GitHub release (a pre-release for
-  `-alpha` tags) with the zip attached.
+  package. Pushing a `v*` tag, or running the Release workflow from the
+  Actions tab, publishes a GitHub release (a pre-release for `-alpha`
+  versions) with the zip attached.
 - A bug report form that asks for the iPod model, Rockbox version and musicOS
   version.
 

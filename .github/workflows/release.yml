@@ -3,6 +3,11 @@ name: Release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to tag and release from the selected branch, e.g. v0.2.2-alpha
+        required: true
 
 permissions:
   contents: write
@@ -10,20 +15,32 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      # The pushed tag, or the version typed in when the workflow is run by hand.
+      TAG: ${{ inputs.version || github.ref_name }}
     steps:
       - uses: actions/checkout@v6
 
+      - name: Check the version
+        run: |
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::'$TAG' is not a version tag such as v0.2.2-alpha"
+            exit 1
+          fi
+
       - name: Build package
-        run: python3 scripts/build.py --version "$GITHUB_REF_NAME" --release
+        run: python3 scripts/build.py --version "$TAG" --release
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # A tag with a pre-release suffix (v0.2.1-alpha, v1.0.0-rc.1) becomes a pre-release.
+          # A pushed tag already exists; a manual run creates the tag on this commit.
+          if [ "$GITHUB_EVENT_NAME" = push ]; then source=--verify-tag; else source="--target $GITHUB_SHA"; fi
+          # A version with a pre-release suffix (v0.2.2-alpha, v1.0.0-rc.1) becomes a pre-release.
           prerelease=
-          case "$GITHUB_REF_NAME" in *-*) prerelease=--prerelease ;; esac
-          gh release create "$GITHUB_REF_NAME" "dist/musicOS-$GITHUB_REF_NAME.zip" \
-            --title "musicOS $GITHUB_REF_NAME" \
+          case "$TAG" in *-*) prerelease=--prerelease ;; esac
+          gh release create "$TAG" "dist/musicOS-$TAG.zip" \
+            --title "musicOS $TAG" \
             --notes-file dist/RELEASE_NOTES.md \
-            --verify-tag $prerelease
+            $source $prerelease
