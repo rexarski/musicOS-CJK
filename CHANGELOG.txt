@@ -1,0 +1,28 @@
+musicOS Changelog
+=================
+
+CJK 1 (fork)
+------------
+- Replaced the three Inter fonts with Inter + Noto Sans CJK builds
+  (20-InterCJK-SemiBold, 15-InterCJK-Bold, 13-InterCJK-SemiBold) so Chinese,
+  Japanese and Korean tags, file names and menus render instead of disappearing.
+  Latin glyphs are byte-identical to Alpha 1.
+- Added tools/build_cjk_fonts.py, tools/build_fonts.sh and tools/preview_fnt.py
+  to rebuild the fonts (Simplified Chinese forms by default; jp/tc/kr variants
+  and CJK Extension A available as build options).
+- Kept the original Alpha 1 fonts in tools/base/ as build inputs.
+- Moved the theme out of the musicOS_Alpha_1/ subfolder to the repository root.
+- Added CJK-SUPPORT.md with the relevant Rockbox manual findings.
+
+Alpha 1
+-------
+- First public alpha release candidate.
+- Added custom Home screen and dynamic mini-player.
+- Added custom Quick Screen.
+- Added custom Now Playing / WPS design.
+- Added dynamic battery display.
+- Added Shuffle and Repeat sprite sheets.
+- Simplified volume and brightness glyph states.
+- Fixed Home mini-player leaking into the Quick Screen during redraws by using permanent viewports with screen-conditional content.
+- Stabilized Home / Quick Screen backdrop switching.
+- Added custom menu title, selection styling and Inter fonts.

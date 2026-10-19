@@ -63,9 +63,9 @@
 # FONTS
 # ==================================================
 
-%Fl(2,13-Inter-SemiBold.fnt)
-%Fl(3,15-Inter-Bold.fnt)
-%Fl(4,20-Inter-SemiBold.fnt)
+%Fl(2,13-InterCJK-SemiBold.fnt)
+%Fl(3,15-InterCJK-Bold.fnt)
+%Fl(4,20-InterCJK-SemiBold.fnt)
 
 
 # ==================================================
